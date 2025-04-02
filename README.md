@@ -1,6 +1,11 @@
 # Front-End APP (React + TypeScript)
 Front-End Solution developed with ReactJS and TypeScript from scratch using Vite plus React Router
 
+## Run Project
+```
+npm start
+```
+
 ## Node Version
 22.14.0
 
