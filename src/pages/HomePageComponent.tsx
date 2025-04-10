@@ -1,17 +1,7 @@
-import { useEffect, useMemo, useState } from "react";
-import IWeather from "../services/weather/interfaces/weather";
-import WeatherService from "../services/weather";
+import useWeatherService from "../services/weather/hooks/useWeatherService";
 
 export default function HomePageComponent() {
-  const sWeather = useMemo(() => new WeatherService(), []);
-
-  const [weatherForecasts, setWeatherForecasts] = useState<IWeather[]>();
-
-  useEffect(() => {
-    sWeather.listAsync().then((data) => {
-      setWeatherForecasts(data);
-    });
-  }, [sWeather]);
+  const { weatherForecasts, fetchWeatherForecasts } = useWeatherService();
 
   return (
     <>
@@ -33,6 +23,7 @@ export default function HomePageComponent() {
           <br />
         </div>
       ))}
+      <button onClick={fetchWeatherForecasts}>REFRESH</button>
     </>
   );
 }
