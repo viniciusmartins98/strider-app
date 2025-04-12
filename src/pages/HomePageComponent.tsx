@@ -1,7 +1,13 @@
+import { useAuthContext } from "../contexts/authContext";
 import useWeatherService from "../services/weather/hooks/useWeatherService";
 
 export default function HomePageComponent() {
+  const authContext = useAuthContext();
   const { weatherForecasts, fetchWeatherForecasts } = useWeatherService();
+
+  function logout() {
+    authContext.logout();
+  }
 
   return (
     <>
@@ -24,6 +30,9 @@ export default function HomePageComponent() {
         </div>
       ))}
       <button onClick={fetchWeatherForecasts}>REFRESH</button>
+      <br />
+      <br />
+      <button onClick={logout}>LOGOUT</button>
     </>
-  );
+  )
 }
