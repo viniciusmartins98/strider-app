@@ -1,5 +1,6 @@
 import { ReactNode, useState } from "react";
 import authContext from "./authContext";
+import ICredentials from "./interfaces/credentials.interface";
 
 interface AuthProviderProps {
   children: ReactNode;
@@ -8,7 +9,8 @@ interface AuthProviderProps {
 export default function AuthContextProvider({ children }: AuthProviderProps) {
   const [authenticated, setAuthenticated] = useState<boolean>(false);
 
-  function login() {
+  function login(credentials: ICredentials) {
+    console.log(credentials);
     setAuthenticated(true);
   }
 

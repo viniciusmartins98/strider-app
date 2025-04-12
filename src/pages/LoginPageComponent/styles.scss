@@ -1,0 +1,19 @@
+.auth-container {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+}
+
+.auth-panel {
+    border: 1px solid #ccc;
+    width: 600px;
+    padding: 24px 24px 12px 24px;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, .1), 0px 8px 16px rgba(0, 0, 0, .1);
+    margin-bottom: 200px;
+
+    .auth-panel-header {
+        margin-bottom: 24px;
+    }
+}
