@@ -1,6 +1,7 @@
 import { ReactNode, useState } from "react";
 import authContext from "./authContext";
 import ICredentials from "./interfaces/credentials.interface";
+import useAuthService from "../../services/auth/hooks/useAuthService";
 
 interface AuthProviderProps {
   children: ReactNode;
@@ -8,10 +9,21 @@ interface AuthProviderProps {
 
 export default function AuthContextProvider({ children }: AuthProviderProps) {
   const [authenticated, setAuthenticated] = useState<boolean>(false);
+  const [errorMessage, setErrorMessage] = useState<string>();
+  const sAuth = useAuthService();
 
-  function login(credentials: ICredentials) {
-    console.log(credentials);
+  async function login(credentials: ICredentials) {
+    const authResult = await sAuth.authenticate({
+      email: credentials.username,
+      password: credentials.password
+    });
+    if (!authResult.success) {
+      setErrorMessage(authResult.message)
+      return false;
+    }
+    setErrorMessage(undefined);
     setAuthenticated(true);
+    return true;
   }
 
   function logout() {
@@ -19,7 +31,7 @@ export default function AuthContextProvider({ children }: AuthProviderProps) {
   }
 
   return (
-    <authContext.Provider value={{ authenticated, login, logout }}>
+    <authContext.Provider value={{ authenticated, login, logout, errorMessage }}>
       {children}
     </authContext.Provider>
   );
