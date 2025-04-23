@@ -1,8 +1,8 @@
 import axios, { AxiosError } from "axios";
 import config from "../../config";
-import AuthRequest from "./interfaces/authRequest";
-import AuthResponse from "./interfaces/authResponse";
-import AuthResult from "./interfaces/authResult";
+import AuthRequest from "./interfaces/authRequest.interface";
+import AuthResponse from "./interfaces/authResponse.interface";
+import AuthResult from "./interfaces/authResult.interface";
 
 export default class AuthService {
     private _baseUrl = config.apiBaseUrl.endsWith('/') ? config.apiBaseUrl : `${config.apiBaseUrl}/`;

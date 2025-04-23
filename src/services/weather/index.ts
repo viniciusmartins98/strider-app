@@ -1,5 +1,5 @@
 import config from "../../config";
-import IWeather from "./interfaces/weather";
+import IWeather from "./interfaces/weather.interface";
 import axios from 'axios';
 
 class WeatherService {

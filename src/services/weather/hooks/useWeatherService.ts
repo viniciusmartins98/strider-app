@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useMemo, useState } from "react";
-import IWeather from "../interfaces/weather";
+import IWeather from "../interfaces/weather.interface";
 import WeatherService from "..";
 
 export default function useWeatherService() {
