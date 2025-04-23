@@ -3,7 +3,7 @@ import IAuthContext from "./interfaces/authContext.interface";
 
 const authContext = createContext<IAuthContext>({
     authenticated: false,
-    login: () => { },
+    login: async () => false,
     logout: () => { },
 });
 export default authContext;
